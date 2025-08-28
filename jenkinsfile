@@ -1,8 +1,8 @@
-pipeline {
-  agent any
-
+pipeline {   #декларативний pipeline
+  agent any  #pipeline запускається на будь-якому agent
+   #Основні етапи виконання
    stages {
-     stage('Install Apache') {
+     stage('Install Apache') {  #етап встановлення Apache
       steps {
            sh '''
               sudo apt update -y
@@ -17,7 +17,7 @@ pipeline {
       
    stage ('Trigger 404') {
           steps {
-             sh 'curl -I http://localhost/missing-folder/assistent.html'
+             sh 'curl -I http://localhost/missing-folder/assistent.html' #Робимо запит на веб-сервер до неіснуючої сторінки, щоб отримати відповідь 404
           }
         }
      }
