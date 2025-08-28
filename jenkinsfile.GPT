@@ -17,7 +17,7 @@ pipeline {
 
                         echo "Запускаємо і додаємо Apache в автозапуск..."
                         sudo systemctl start apache2 || true   #true дозволяє уникнути падіння, якщо сервіс вже запущений
-                        systemctl enable apache2 || true
+                        sudo systemctl enable apache2 || true
 
                         echo "Перевіряємо, чи активний Apache..."
                         sudo systemctl is-active --quiet apache2
