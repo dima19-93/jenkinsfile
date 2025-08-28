@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+
+   stages {
+     stage('Install Apache') {
+      steps {
+           sh '''
+              sudo apt update -y
+              sudo apt install apache2 -y 
+              sudo systemctl start apache2
+              sudo systemctl enable apache2
+              sudo systemctl status apache2 
+           '''
+       }
+     }
+   
+      
+   stage ('Trigger 404') {
+          steps {
+             sh 'curl -I http://localhost/missing-folder/assistent.html'
+          }
+        }
+     }
+}
