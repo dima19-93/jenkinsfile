@@ -10,17 +10,17 @@ pipeline {
                         set -e  #зупиняємо виконання, якщо якась команда впаде
 
                         echo "Оновлюємо список пакетів..."
-                        apt-get update -y
+                        sudo apt-get update -y
 
                         echo "Встановлюємо Apache..."
-                        apt-get install -y apache2
+                        sudo apt-get install -y apache2
 
                         echo "Запускаємо і додаємо Apache в автозапуск..."
-                        systemctl start apache2 || true   #true дозволяє уникнути падіння, якщо сервіс вже запущений
+                        sudo systemctl start apache2 || true   #true дозволяє уникнути падіння, якщо сервіс вже запущений
                         systemctl enable apache2 || true
 
                         echo "Перевіряємо, чи активний Apache..."
-                        systemctl is-active --quiet apache2
+                        sudo systemctl is-active --quiet apache2
                     '''
                 }
             }
